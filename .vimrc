@@ -58,6 +58,7 @@ set termguicolors
 
 colorscheme koehler
 
+highlight StatusLine ctermfg=black ctermbg=yellow guifg=black guibg=yellow
 
 
 
