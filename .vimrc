@@ -28,27 +28,9 @@ set updatetime=500 scrolloff=5
 " Set the leader key
 let mapleader = ' '
 
-" Keybindings for splits and closing splits with file path completion
-nnoremap <leader>v :call SplitOrClose('v')<CR>
-nnoremap <leader>h :call SplitOrClose('h')<CR>
-nnoremap <leader>q :call SplitOrClose('q')<CR>
-
-function! SplitOrClose(action)
-    if a:action == 'v'
-        let filepath = input('Vertical Split File Path: ', '', 'file')
-        if filepath != ''
-            exec 'vsplit ' . filepath
-        endif
-    elseif a:action == 'h'
-        let filepath = input('Horizontal Split File Path: ', '', 'file')
-        if filepath != ''
-            exec 'split ' . filepath
-        endif
-    elseif a:action == 'q'
-        close
-    endif
-endfunction
-
+" Keybindings for system clipboard
+vmap <Leader>y :w !xclip -selection clipboard<CR>
+nmap <Leader>p :r !xclip -selection clipboard -o<CR>
 
 " Colors and themes
 if !has('gui_running')
@@ -57,8 +39,4 @@ endif
 set termguicolors
 
 colorscheme koehler
-
-highlight StatusLine ctermfg=black ctermbg=yellow guifg=black guibg=yellow
-
-
 
